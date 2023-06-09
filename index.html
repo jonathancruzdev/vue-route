@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Router</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3/dist/vue-router.js"></script>
+
+    <script src="ContactosView.js"></script>
+
+    <script src="app.js" defer></script>
+    <script src="pizza.js"></script>
+    <script src="carrito.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Pizzas</h1>
+    </header>
+    <main id="app">
+        <Titulo texto="Esto es un nuevo título"></Titulo>
+
+            <router-link to="/" > Inicio</router-link>
+            <router-link to="/pizzas/1" >Pizzas Napolitan</router-link>
+            <router-link to="/pizzas/2" >Pizzas Muzza</router-link>
+
+            <router-link to="/contactos" >Contactos </router-link>
+
+            <router-view></router-view>
+
+
+
+   
+        <div class="row">
+            
+            <pizza  v-for="(item, index) in pizzas" 
+                    v-bind:nombre="item.nombre"
+                    v-bind:foto="item.foto" 
+                    v-bind:precio="item.precio"
+                    v-bind:key="index" 
+                    
+                    v-on:add="agregarAlCarrito(index)"
+                    
+                    >
+            </pizza>
+            
+        </div>
+
+
+        <div class="row">
+            <carrito cantidad="2"></carrito>
+
+        </div>
+    </main>
+    <footer>
+        <p> DV | Aplicaciones para Dispositivos Móviles | DWT3AP</p>
+    </footer>
+</body>
+</html>
